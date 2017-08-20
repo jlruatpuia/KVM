@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="GetFinancialYear">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="dt" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFinancialYearResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetFinancialYearResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRetailInvoice">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="dt" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="Table" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ShortName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRetailInvoiceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetRetailInvoiceResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSalesInvoice">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="dt" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="ShortName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSalesInvoiceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSalesInvoiceResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetFinancialYearSoapIn">
+    <wsdl:part name="parameters" element="tns:GetFinancialYear" />
+  </wsdl:message>
+  <wsdl:message name="GetFinancialYearSoapOut">
+    <wsdl:part name="parameters" element="tns:GetFinancialYearResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetRetailInvoiceSoapIn">
+    <wsdl:part name="parameters" element="tns:GetRetailInvoice" />
+  </wsdl:message>
+  <wsdl:message name="GetRetailInvoiceSoapOut">
+    <wsdl:part name="parameters" element="tns:GetRetailInvoiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSalesInvoiceSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSalesInvoice" />
+  </wsdl:message>
+  <wsdl:message name="GetSalesInvoiceSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSalesInvoiceResponse" />
+  </wsdl:message>
+  <wsdl:portType name="MySettingsSoap">
+    <wsdl:operation name="GetFinancialYear">
+      <wsdl:input message="tns:GetFinancialYearSoapIn" />
+      <wsdl:output message="tns:GetFinancialYearSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRetailInvoice">
+      <wsdl:input message="tns:GetRetailInvoiceSoapIn" />
+      <wsdl:output message="tns:GetRetailInvoiceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSalesInvoice">
+      <wsdl:input message="tns:GetSalesInvoiceSoapIn" />
+      <wsdl:output message="tns:GetSalesInvoiceSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="MySettingsSoap" type="tns:MySettingsSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetFinancialYear">
+      <soap:operation soapAction="http://tempuri.org/GetFinancialYear" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRetailInvoice">
+      <soap:operation soapAction="http://tempuri.org/GetRetailInvoice" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSalesInvoice">
+      <soap:operation soapAction="http://tempuri.org/GetSalesInvoice" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="MySettingsSoap12" type="tns:MySettingsSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetFinancialYear">
+      <soap12:operation soapAction="http://tempuri.org/GetFinancialYear" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRetailInvoice">
+      <soap12:operation soapAction="http://tempuri.org/GetRetailInvoice" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSalesInvoice">
+      <soap12:operation soapAction="http://tempuri.org/GetSalesInvoice" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="MySettings">
+    <wsdl:port name="MySettingsSoap" binding="tns:MySettingsSoap">
+      <soap:address location="http://localhost:61258/MySettings.asmx" />
+    </wsdl:port>
+    <wsdl:port name="MySettingsSoap12" binding="tns:MySettingsSoap12">
+      <soap12:address location="http://localhost:61258/MySettings.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

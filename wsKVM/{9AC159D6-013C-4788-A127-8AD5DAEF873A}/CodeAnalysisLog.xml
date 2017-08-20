@@ -1,0 +1,172 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="c:\program files (x86)\microsoft visual studio 14.0\team tools\static analysis tools\fxcop\Xml\CodeAnalysisReport.xsl"?>
+<FxCopReport Version="14.0">
+ <Targets>
+  <Target Name="C:\Users\Ruatpuia\AppData\Local\Temp\tmpCEB9.tmp.cadir\bin\App_Code.dll">
+   <Modules>
+    <Module Name="app_code.dll">
+     <Namespaces>
+      <Namespace Name="">
+       <Types>
+        <Type Name="MySettings" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#GetRetailInvoice(System.DateTime,System.String,System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2017-08-18 14:11:17Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="c:\Users\Ruatpuia\Documents\Visual Studio 2015\WebSites\wsKVM\App_Code" File="MySettings.cs" Line="49">The query string passed to 'MySqlCommand.MySqlCommand(string, MySqlConnection)' in 'MySettings.GetRetailInvoice(DateTime, string, string)' could contain the following variables 'Table', 'ShortName'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="c:\Users\Ruatpuia\Documents\Visual Studio 2015\WebSites\wsKVM\App_Code" File="MySettings.cs" Line="66">The query string passed to 'MySqlCommand.MySqlCommand(string, MySqlConnection)' in 'MySettings.GetRetailInvoice(DateTime, string, string)' could contain the following variables 'Table', 'ShortName', 'this.GetFinancialYear(dt)', 'this.GetFinancialYear(dt)', 'rd[0]'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#GetSalesInvoice(System.DateTime,System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2017-08-18 14:11:17Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="c:\Users\Ruatpuia\Documents\Visual Studio 2015\WebSites\wsKVM\App_Code" File="MySettings.cs" Line="90">The query string passed to 'MySqlCommand.MySqlCommand(string, MySqlConnection)' in 'MySettings.GetSalesInvoice(DateTime, string)' could contain the following variables 'ShortName'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="c:\Users\Ruatpuia\Documents\Visual Studio 2015\WebSites\wsKVM\App_Code" File="MySettings.cs" Line="107">The query string passed to 'MySqlCommand.MySqlCommand(string, MySqlConnection)' in 'MySettings.GetSalesInvoice(DateTime, string)' could contain the following variables 'ShortName', 'this.GetFinancialYear(dt)', 'this.GetFinancialYear(dt)', 'rd[0]'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="Peoples" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#_AccountStatement(System.Int32,System.DateTime,System.DateTime)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2017-08-18 14:11:17Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="c:\Users\Ruatpuia\Documents\Visual Studio 2015\WebSites\wsKVM\App_Code" File="Peoples.cs" Line="271">The query string passed to 'MySqlCommand.MySqlCommand(string, MySqlConnection)' in 'Peoples._AccountStatement(int, DateTime, DateTime)' could contain the following variables 'CustomerID', 'MySettings.getDate(DateFrom)'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="c:\Users\Ruatpuia\Documents\Visual Studio 2015\WebSites\wsKVM\App_Code" File="Peoples.cs" Line="289">The query string passed to 'MySqlCommand.MySqlCommand(string, MySqlConnection)' in 'Peoples._AccountStatement(int, DateTime, DateTime)' could contain the following variables 'CustomerID', 'MySettings.getDate(DateFrom)', 'MySettings.getDate(DateTo)'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="Products" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#_GetProductCountByBarCode(System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2017-08-18 14:11:17Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="c:\Users\Ruatpuia\Documents\Visual Studio 2015\WebSites\wsKVM\App_Code" File="Products.cs" Line="186">The query string passed to 'MySqlCommand.MySqlCommand(string, MySqlConnection)' in 'Products._GetProductCountByBarCode(string)' could contain the following variables 'BarCode'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#_GetProductDataByBarCode(System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2017-08-18 14:11:17Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="c:\Users\Ruatpuia\Documents\Visual Studio 2015\WebSites\wsKVM\App_Code" File="Products.cs" Line="201">The query string passed to 'MySqlCommand.MySqlCommand(string, MySqlConnection)' in 'Products._GetProductDataByBarCode(string)' could contain the following variables 'BarCode'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#_GetProductDetailByBarCode(System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2017-08-18 14:11:17Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="c:\Users\Ruatpuia\Documents\Visual Studio 2015\WebSites\wsKVM\App_Code" File="Products.cs" Line="213">The query string passed to 'MySqlCommand.MySqlCommand(string, MySqlConnection)' in 'Products._GetProductDetailByBarCode(string)' could contain the following variables 'BarCode'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="Transact" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#_GetSalesByDate(System.DateTime)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2017-08-18 14:11:17Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="c:\Users\Ruatpuia\Documents\Visual Studio 2015\WebSites\wsKVM\App_Code" File="Transact.cs" Line="186">The query string passed to 'MySqlCommand.MySqlCommand(string, MySqlConnection)' in 'Transact._GetSalesByDate(DateTime)' could contain the following variables 'MySettings.getDate(sellDate)'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#_GetSalesByDates(System.DateTime,System.DateTime)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2017-08-18 14:11:17Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="c:\Users\Ruatpuia\Documents\Visual Studio 2015\WebSites\wsKVM\App_Code" File="Transact.cs" Line="202">The query string passed to 'MySqlCommand.MySqlCommand(string, MySqlConnection)' in 'Transact._GetSalesByDates(DateTime, DateTime)' could contain the following variables 'MySettings.getDate(date1)', 'MySettings.getDate(date2)'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#_GetSalesByInvoice(System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2017-08-18 14:11:17Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="c:\Users\Ruatpuia\Documents\Visual Studio 2015\WebSites\wsKVM\App_Code" File="Transact.cs" Line="171">The query string passed to 'MySqlCommand.MySqlCommand(string, MySqlConnection)' in 'Transact._GetSalesByInvoice(string)' could contain the following variables 'InvoiceNo'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#_QuickSaleReport(System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2017-08-18 14:11:17Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="c:\Users\Ruatpuia\Documents\Visual Studio 2015\WebSites\wsKVM\App_Code" File="Transact.cs" Line="215">The query string passed to 'MySqlCommand.MySqlCommand(string, MySqlConnection)' in 'Transact._QuickSaleReport(string)' could contain the following variables 'InvoiceNo'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="c:\Users\Ruatpuia\Documents\Visual Studio 2015\WebSites\wsKVM\App_Code" File="Transact.cs" Line="221">The query string passed to 'MySqlCommand.MySqlCommand(string, MySqlConnection)' in 'Transact._QuickSaleReport(string)' could contain the following variables 'InvoiceNo'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#_SalesByProductNameChart(System.DateTime,System.DateTime)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2017-08-18 14:11:17Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="c:\Users\Ruatpuia\Documents\Visual Studio 2015\WebSites\wsKVM\App_Code" File="Transact.cs" Line="246">The query string passed to 'MySqlCommand.MySqlCommand(string, MySqlConnection)' in 'Transact._SalesByProductNameChart(DateTime, DateTime)' could contain the following variables 'MySettings.getDate(DateFrom)', 'MySettings.getDate(DateTo)'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#_SalesByProductQuantityChart(System.DateTime,System.DateTime)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2017-08-18 14:11:17Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="c:\Users\Ruatpuia\Documents\Visual Studio 2015\WebSites\wsKVM\App_Code" File="Transact.cs" Line="262">The query string passed to 'MySqlCommand.MySqlCommand(string, MySqlConnection)' in 'Transact._SalesByProductQuantityChart(DateTime, DateTime)' could contain the following variables 'MySettings.getDate(DateFrom)', 'MySettings.getDate(DateTo)'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#_ViewPurchaseByDate(System.DateTime)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2017-08-18 14:11:17Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="c:\Users\Ruatpuia\Documents\Visual Studio 2015\WebSites\wsKVM\App_Code" File="Transact.cs" Line="77">The query string passed to 'MySqlCommand.MySqlCommand(string, MySqlConnection)' in 'Transact._ViewPurchaseByDate(DateTime)' could contain the following variables 'MySettings.getDate(date)'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#_ViewPurchaseByDates(System.DateTime,System.DateTime)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2017-08-18 14:11:17Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="c:\Users\Ruatpuia\Documents\Visual Studio 2015\WebSites\wsKVM\App_Code" File="Transact.cs" Line="94">The query string passed to 'MySqlCommand.MySqlCommand(string, MySqlConnection)' in 'Transact._ViewPurchaseByDates(DateTime, DateTime)' could contain the following variables 'MySettings.getDate(date1)', 'MySettings.getDate(date2)'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
+     </Namespaces>
+    </Module>
+   </Modules>
+  </Target>
+ </Targets>
+ <Rules>
+  <Rule TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100">
+   <Name>Review SQL queries for security vulnerabilities</Name>
+   <Description>A SQL command string built from user input is vulnerable to SQL injection attacks. Microsoft SQL Server and other database servers support stored procedures and parameterized SQL queries, which reduce the risk of injection attacks.</Description>
+   <Resolution Name="WithNonLiterals">The query string passed to {0} in {1} could contain the following variables {2}. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Resolution>
+   <Owner>RuleOwner</Owner>
+   <Url>http://msdn.microsoft.com/library/ms182310.aspx</Url>
+   <Email />
+   <MessageLevel Certainty="75">Warning</MessageLevel>
+   <File Name="dataflowrules.dll" Version="14.0.0.0" />
+  </Rule>
+ </Rules>
+ <Localized>
+  <String Key="Category">Category</String>
+  <String Key="Certainty">Certainty</String>
+  <String Key="CollapseAll">Collapse All</String>
+  <String Key="CheckId">Check Id</String>
+  <String Key="Error">Error</String>
+  <String Key="Errors">error(s)</String>
+  <String Key="ExpandAll">Expand All</String>
+  <String Key="Help">Help</String>
+  <String Key="Line">Line</String>
+  <String Key="Messages">message(s)</String>
+  <String Key="LocationNotStoredInPdb">[Location not stored in Pdb]</String>
+  <String Key="Project">Project</String>
+  <String Key="Resolution">Resolution</String>
+  <String Key="Rule">Rule</String>
+  <String Key="RuleFile">Rule File</String>
+  <String Key="RuleDescription">Rule Description</String>
+  <String Key="Source">Source</String>
+  <String Key="Status">Status</String>
+  <String Key="Target">Target</String>
+  <String Key="Warning">Warning</String>
+  <String Key="Warnings">warning(s)</String>
+  <String Key="ReportTitle">Code Analysis Report</String>
+ </Localized>
+</FxCopReport>

@@ -1,0 +1,18 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="KVM.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="KV_Mart_wrTransact_Transact" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:61258/Transact.asmx</Value>
+    </Setting>
+    <Setting Name="KV_Mart_wrSettings_MySettings" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:61258/MySettings.asmx</Value>
+    </Setting>
+    <Setting Name="KV_Mart_wrProducts_Products" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:61258/Products.asmx</Value>
+    </Setting>
+    <Setting Name="KV_Mart_wrPeoples_Peoples" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:61258/Peoples.asmx</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

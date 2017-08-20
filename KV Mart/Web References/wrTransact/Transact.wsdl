@@ -1,0 +1,637 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="_AddPurchase">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p" type="tns:Purchase" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Purchase">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="InvoiceNo" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="PurchaseDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="SupplierID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Amount" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="Payment" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="Balance" type="s:double" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="_AddPurchaseResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="_AddPurchaseResult" type="tns:ServerToClient" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ServerToClient">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Count" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Value" type="s:double" />
+          <s:element minOccurs="0" maxOccurs="1" name="DT">
+            <s:complexType>
+              <s:sequence>
+                <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+              </s:sequence>
+            </s:complexType>
+          </s:element>
+          <s:element minOccurs="0" maxOccurs="1" name="DS">
+            <s:complexType>
+              <s:sequence>
+                <s:element ref="s:schema" />
+                <s:any />
+              </s:sequence>
+            </s:complexType>
+          </s:element>
+          <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="_AddPurchaseDetail">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pd" type="tns:PurchaseDetail" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="PurchaseDetail">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="InvoiceNo" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ProductID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Quantity" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="BuyingValue" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="SellingValue" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="Amount" type="s:double" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="_AddPurchaseDetailResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="_AddPurchaseDetailResult" type="tns:ServerToClient" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="_ViewPurchaseByDate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="date" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="_ViewPurchaseByDateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="_ViewPurchaseByDateResult" type="tns:ServerToClient" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="_ViewPurchaseByDates">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="date1" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="date2" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="_ViewPurchaseByDatesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="_ViewPurchaseByDatesResult" type="tns:ServerToClient" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="_AddSale">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="s" type="tns:Sale" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Sale">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="InvoiceNo" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="SellDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="CustomerID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Amount" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="Discount" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="Payment" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="Balance" type="s:double" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="_AddSaleResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="_AddSaleResult" type="tns:ServerToClient" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="_AddSaleDetails">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sd" type="tns:SaleDetail" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="SaleDetail">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="InvoiceNo" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ProductID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Quantity" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="BuyingValue" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="SellingValue" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="Amount" type="s:double" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="_AddSaleDetailsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="_AddSaleDetailsResult" type="tns:ServerToClient" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="_GetSales">
+        <s:complexType />
+      </s:element>
+      <s:element name="_GetSalesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="_GetSalesResult" type="tns:ServerToClient" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="_GetSalesByInvoice">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InvoiceNo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="_GetSalesByInvoiceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="_GetSalesByInvoiceResult" type="tns:ServerToClient" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="_GetSalesByDate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="sellDate" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="_GetSalesByDateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="_GetSalesByDateResult" type="tns:ServerToClient" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="_GetSalesByDates">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="date1" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="date2" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="_GetSalesByDatesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="_GetSalesByDatesResult" type="tns:ServerToClient" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="_QuickSaleReport">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InvoiceNo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="_QuickSaleReportResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="_QuickSaleReportResult" type="tns:ServerToClient" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="_SalesByProductNameChart">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DateFrom" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="DateTo" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="_SalesByProductNameChartResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="_SalesByProductNameChartResult" type="tns:ServerToClient" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="_SalesByProductQuantityChart">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DateFrom" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="DateTo" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="_SalesByProductQuantityChartResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="_SalesByProductQuantityChartResult" type="tns:ServerToClient" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="_AddPurchaseSoapIn">
+    <wsdl:part name="parameters" element="tns:_AddPurchase" />
+  </wsdl:message>
+  <wsdl:message name="_AddPurchaseSoapOut">
+    <wsdl:part name="parameters" element="tns:_AddPurchaseResponse" />
+  </wsdl:message>
+  <wsdl:message name="_AddPurchaseDetailSoapIn">
+    <wsdl:part name="parameters" element="tns:_AddPurchaseDetail" />
+  </wsdl:message>
+  <wsdl:message name="_AddPurchaseDetailSoapOut">
+    <wsdl:part name="parameters" element="tns:_AddPurchaseDetailResponse" />
+  </wsdl:message>
+  <wsdl:message name="_ViewPurchaseByDateSoapIn">
+    <wsdl:part name="parameters" element="tns:_ViewPurchaseByDate" />
+  </wsdl:message>
+  <wsdl:message name="_ViewPurchaseByDateSoapOut">
+    <wsdl:part name="parameters" element="tns:_ViewPurchaseByDateResponse" />
+  </wsdl:message>
+  <wsdl:message name="_ViewPurchaseByDatesSoapIn">
+    <wsdl:part name="parameters" element="tns:_ViewPurchaseByDates" />
+  </wsdl:message>
+  <wsdl:message name="_ViewPurchaseByDatesSoapOut">
+    <wsdl:part name="parameters" element="tns:_ViewPurchaseByDatesResponse" />
+  </wsdl:message>
+  <wsdl:message name="_AddSaleSoapIn">
+    <wsdl:part name="parameters" element="tns:_AddSale" />
+  </wsdl:message>
+  <wsdl:message name="_AddSaleSoapOut">
+    <wsdl:part name="parameters" element="tns:_AddSaleResponse" />
+  </wsdl:message>
+  <wsdl:message name="_AddSaleDetailsSoapIn">
+    <wsdl:part name="parameters" element="tns:_AddSaleDetails" />
+  </wsdl:message>
+  <wsdl:message name="_AddSaleDetailsSoapOut">
+    <wsdl:part name="parameters" element="tns:_AddSaleDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="_GetSalesSoapIn">
+    <wsdl:part name="parameters" element="tns:_GetSales" />
+  </wsdl:message>
+  <wsdl:message name="_GetSalesSoapOut">
+    <wsdl:part name="parameters" element="tns:_GetSalesResponse" />
+  </wsdl:message>
+  <wsdl:message name="_GetSalesByInvoiceSoapIn">
+    <wsdl:part name="parameters" element="tns:_GetSalesByInvoice" />
+  </wsdl:message>
+  <wsdl:message name="_GetSalesByInvoiceSoapOut">
+    <wsdl:part name="parameters" element="tns:_GetSalesByInvoiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="_GetSalesByDateSoapIn">
+    <wsdl:part name="parameters" element="tns:_GetSalesByDate" />
+  </wsdl:message>
+  <wsdl:message name="_GetSalesByDateSoapOut">
+    <wsdl:part name="parameters" element="tns:_GetSalesByDateResponse" />
+  </wsdl:message>
+  <wsdl:message name="_GetSalesByDatesSoapIn">
+    <wsdl:part name="parameters" element="tns:_GetSalesByDates" />
+  </wsdl:message>
+  <wsdl:message name="_GetSalesByDatesSoapOut">
+    <wsdl:part name="parameters" element="tns:_GetSalesByDatesResponse" />
+  </wsdl:message>
+  <wsdl:message name="_QuickSaleReportSoapIn">
+    <wsdl:part name="parameters" element="tns:_QuickSaleReport" />
+  </wsdl:message>
+  <wsdl:message name="_QuickSaleReportSoapOut">
+    <wsdl:part name="parameters" element="tns:_QuickSaleReportResponse" />
+  </wsdl:message>
+  <wsdl:message name="_SalesByProductNameChartSoapIn">
+    <wsdl:part name="parameters" element="tns:_SalesByProductNameChart" />
+  </wsdl:message>
+  <wsdl:message name="_SalesByProductNameChartSoapOut">
+    <wsdl:part name="parameters" element="tns:_SalesByProductNameChartResponse" />
+  </wsdl:message>
+  <wsdl:message name="_SalesByProductQuantityChartSoapIn">
+    <wsdl:part name="parameters" element="tns:_SalesByProductQuantityChart" />
+  </wsdl:message>
+  <wsdl:message name="_SalesByProductQuantityChartSoapOut">
+    <wsdl:part name="parameters" element="tns:_SalesByProductQuantityChartResponse" />
+  </wsdl:message>
+  <wsdl:portType name="TransactSoap">
+    <wsdl:operation name="_AddPurchase">
+      <wsdl:input message="tns:_AddPurchaseSoapIn" />
+      <wsdl:output message="tns:_AddPurchaseSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="_AddPurchaseDetail">
+      <wsdl:input message="tns:_AddPurchaseDetailSoapIn" />
+      <wsdl:output message="tns:_AddPurchaseDetailSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="_ViewPurchaseByDate">
+      <wsdl:input message="tns:_ViewPurchaseByDateSoapIn" />
+      <wsdl:output message="tns:_ViewPurchaseByDateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="_ViewPurchaseByDates">
+      <wsdl:input message="tns:_ViewPurchaseByDatesSoapIn" />
+      <wsdl:output message="tns:_ViewPurchaseByDatesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="_AddSale">
+      <wsdl:input message="tns:_AddSaleSoapIn" />
+      <wsdl:output message="tns:_AddSaleSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="_AddSaleDetails">
+      <wsdl:input message="tns:_AddSaleDetailsSoapIn" />
+      <wsdl:output message="tns:_AddSaleDetailsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="_GetSales">
+      <wsdl:input message="tns:_GetSalesSoapIn" />
+      <wsdl:output message="tns:_GetSalesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="_GetSalesByInvoice">
+      <wsdl:input message="tns:_GetSalesByInvoiceSoapIn" />
+      <wsdl:output message="tns:_GetSalesByInvoiceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="_GetSalesByDate">
+      <wsdl:input message="tns:_GetSalesByDateSoapIn" />
+      <wsdl:output message="tns:_GetSalesByDateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="_GetSalesByDates">
+      <wsdl:input message="tns:_GetSalesByDatesSoapIn" />
+      <wsdl:output message="tns:_GetSalesByDatesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="_QuickSaleReport">
+      <wsdl:input message="tns:_QuickSaleReportSoapIn" />
+      <wsdl:output message="tns:_QuickSaleReportSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="_SalesByProductNameChart">
+      <wsdl:input message="tns:_SalesByProductNameChartSoapIn" />
+      <wsdl:output message="tns:_SalesByProductNameChartSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="_SalesByProductQuantityChart">
+      <wsdl:input message="tns:_SalesByProductQuantityChartSoapIn" />
+      <wsdl:output message="tns:_SalesByProductQuantityChartSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="TransactSoap" type="tns:TransactSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="_AddPurchase">
+      <soap:operation soapAction="http://tempuri.org/_AddPurchase" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="_AddPurchaseDetail">
+      <soap:operation soapAction="http://tempuri.org/_AddPurchaseDetail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="_ViewPurchaseByDate">
+      <soap:operation soapAction="http://tempuri.org/_ViewPurchaseByDate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="_ViewPurchaseByDates">
+      <soap:operation soapAction="http://tempuri.org/_ViewPurchaseByDates" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="_AddSale">
+      <soap:operation soapAction="http://tempuri.org/_AddSale" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="_AddSaleDetails">
+      <soap:operation soapAction="http://tempuri.org/_AddSaleDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="_GetSales">
+      <soap:operation soapAction="http://tempuri.org/_GetSales" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="_GetSalesByInvoice">
+      <soap:operation soapAction="http://tempuri.org/_GetSalesByInvoice" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="_GetSalesByDate">
+      <soap:operation soapAction="http://tempuri.org/_GetSalesByDate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="_GetSalesByDates">
+      <soap:operation soapAction="http://tempuri.org/_GetSalesByDates" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="_QuickSaleReport">
+      <soap:operation soapAction="http://tempuri.org/_QuickSaleReport" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="_SalesByProductNameChart">
+      <soap:operation soapAction="http://tempuri.org/_SalesByProductNameChart" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="_SalesByProductQuantityChart">
+      <soap:operation soapAction="http://tempuri.org/_SalesByProductQuantityChart" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="TransactSoap12" type="tns:TransactSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="_AddPurchase">
+      <soap12:operation soapAction="http://tempuri.org/_AddPurchase" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="_AddPurchaseDetail">
+      <soap12:operation soapAction="http://tempuri.org/_AddPurchaseDetail" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="_ViewPurchaseByDate">
+      <soap12:operation soapAction="http://tempuri.org/_ViewPurchaseByDate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="_ViewPurchaseByDates">
+      <soap12:operation soapAction="http://tempuri.org/_ViewPurchaseByDates" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="_AddSale">
+      <soap12:operation soapAction="http://tempuri.org/_AddSale" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="_AddSaleDetails">
+      <soap12:operation soapAction="http://tempuri.org/_AddSaleDetails" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="_GetSales">
+      <soap12:operation soapAction="http://tempuri.org/_GetSales" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="_GetSalesByInvoice">
+      <soap12:operation soapAction="http://tempuri.org/_GetSalesByInvoice" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="_GetSalesByDate">
+      <soap12:operation soapAction="http://tempuri.org/_GetSalesByDate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="_GetSalesByDates">
+      <soap12:operation soapAction="http://tempuri.org/_GetSalesByDates" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="_QuickSaleReport">
+      <soap12:operation soapAction="http://tempuri.org/_QuickSaleReport" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="_SalesByProductNameChart">
+      <soap12:operation soapAction="http://tempuri.org/_SalesByProductNameChart" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="_SalesByProductQuantityChart">
+      <soap12:operation soapAction="http://tempuri.org/_SalesByProductQuantityChart" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Transact">
+    <wsdl:port name="TransactSoap" binding="tns:TransactSoap">
+      <soap:address location="http://localhost:61258/Transact.asmx" />
+    </wsdl:port>
+    <wsdl:port name="TransactSoap12" binding="tns:TransactSoap12">
+      <soap12:address location="http://localhost:61258/Transact.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
