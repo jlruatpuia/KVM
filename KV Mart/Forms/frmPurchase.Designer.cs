@@ -66,6 +66,7 @@
             this.txtMFG = new DevExpress.XtraEditors.TextEdit();
             this.txtBVL = new DevExpress.XtraEditors.SpinEdit();
             this.luePNM = new DevExpress.XtraEditors.SearchLookUpEdit();
+            this.repCAT = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.searchLookUpEdit2View = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colPRDID = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colPRDCAT = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -113,7 +114,6 @@
             this.layoutControlItem22 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem23 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem15 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.repCAT = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtTAX.Properties)).BeginInit();
@@ -131,6 +131,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtMFG.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBVL.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.luePNM.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repCAT)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit2View)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboCMP.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboSCT.Properties)).BeginInit();
@@ -167,7 +168,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem22)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem23)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem15)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repCAT)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl1
@@ -507,6 +507,11 @@
             // 
             // btnADD
             // 
+            this.btnADD.Appearance.BackColor = System.Drawing.Color.LightCyan;
+            this.btnADD.Appearance.BackColor2 = System.Drawing.Color.LightCyan;
+            this.btnADD.Appearance.BorderColor = System.Drawing.Color.LightCyan;
+            this.btnADD.Appearance.Options.UseBackColor = true;
+            this.btnADD.Appearance.Options.UseBorderColor = true;
             this.btnADD.Location = new System.Drawing.Point(901, 132);
             this.btnADD.Name = "btnADD";
             this.btnADD.Size = new System.Drawing.Size(131, 44);
@@ -519,6 +524,8 @@
             // 
             this.txtBCD.Location = new System.Drawing.Point(601, 156);
             this.txtBCD.Name = "txtBCD";
+            this.txtBCD.Properties.Appearance.BackColor = System.Drawing.Color.LightCyan;
+            this.txtBCD.Properties.Appearance.Options.UseBackColor = true;
             this.txtBCD.Size = new System.Drawing.Size(296, 20);
             this.txtBCD.StyleController = this.layoutControl1;
             this.txtBCD.TabIndex = 17;
@@ -551,6 +558,8 @@
             // 
             this.txtEXP.Location = new System.Drawing.Point(869, 108);
             this.txtEXP.Name = "txtEXP";
+            this.txtEXP.Properties.Mask.EditMask = "\\d?\\d?/\\d\\d\\d\\d";
+            this.txtEXP.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Regular;
             this.txtEXP.Properties.NullText = "MM/YYYY";
             this.txtEXP.Size = new System.Drawing.Size(163, 20);
             this.txtEXP.StyleController = this.layoutControl1;
@@ -575,8 +584,8 @@
             // 
             this.txtMFG.Location = new System.Drawing.Point(598, 108);
             this.txtMFG.Name = "txtMFG";
-            this.txtMFG.Properties.Mask.EditMask = "MM/yyyy";
-            this.txtMFG.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.DateTime;
+            this.txtMFG.Properties.Mask.EditMask = "\\d?\\d?/\\d\\d\\d\\d";
+            this.txtMFG.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Regular;
             this.txtMFG.Properties.NullText = "MM/YYYY";
             this.txtMFG.Size = new System.Drawing.Size(193, 20);
             this.txtMFG.StyleController = this.layoutControl1;
@@ -613,6 +622,16 @@
             this.luePNM.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.luePNM_ButtonClick);
             this.luePNM.EditValueChanged += new System.EventHandler(this.luePNM_EditValueChanged);
             // 
+            // repCAT
+            // 
+            this.repCAT.AutoHeight = false;
+            this.repCAT.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repCAT.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("ID", "colRepCatID", 20, DevExpress.Utils.FormatType.None, "", false, DevExpress.Utils.HorzAlignment.Default),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("CategoryName", "colRepCatName")});
+            this.repCAT.Name = "repCAT";
+            // 
             // searchLookUpEdit2View
             // 
             this.searchLookUpEdit2View.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
@@ -641,7 +660,7 @@
             // 
             this.colPRDCAT.Caption = "Category";
             this.colPRDCAT.ColumnEdit = this.repCAT;
-            this.colPRDCAT.FieldName = "CategoryName";
+            this.colPRDCAT.FieldName = "Category";
             this.colPRDCAT.Name = "colPRDCAT";
             this.colPRDCAT.OptionsColumn.AllowEdit = false;
             this.colPRDCAT.OptionsColumn.AllowFocus = false;
@@ -1111,16 +1130,6 @@
             this.layoutControlItem15.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem15.TextVisible = false;
             // 
-            // repCAT
-            // 
-            this.repCAT.AutoHeight = false;
-            this.repCAT.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repCAT.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("ID", "colRepCatID", 20, DevExpress.Utils.FormatType.None, "", false, DevExpress.Utils.HorzAlignment.Default),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("CategoryName", "colRepCatName")});
-            this.repCAT.Name = "repCAT";
-            // 
             // frmPurchase
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1151,6 +1160,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtMFG.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBVL.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.luePNM.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repCAT)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit2View)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboCMP.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboSCT.Properties)).EndInit();
@@ -1187,7 +1197,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem22)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem23)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem15)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repCAT)).EndInit();
             this.ResumeLayout(false);
 
         }

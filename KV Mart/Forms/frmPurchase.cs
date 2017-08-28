@@ -22,7 +22,9 @@ namespace KVM.Forms
             InitializeComponent();
             dtpPDT.DateTime = DateTime.Now;
             InitSuppliers();
+            InitCategories();
             InitProducts();
+
             InitDataTable();
             InitInvoiceNo();
             InitSubCategory();
@@ -64,9 +66,9 @@ namespace KVM.Forms
             //repSNM.ValueMember = "ID";
 
         }
-        void InitProducts()
-        { 
-            // Products
+
+        void InitCategories()
+        {
             wrProducts.ServerToClient sc = new wrProducts.ServerToClient();
             Products px = new Products();
             sc = px._GetCategories();
@@ -76,6 +78,19 @@ namespace KVM.Forms
             repCAT.DataSource = sc.DT;
             repCAT.DisplayMember = "CategoryName";
             repCAT.ValueMember = "ID";
+        }
+        void InitProducts()
+        { 
+            // Products
+            wrProducts.ServerToClient sc = new wrProducts.ServerToClient();
+            Products px = new Products();
+            //sc = px._GetCategories();
+            //lueCAT.Properties.DataSource = sc.DT;
+            //lueCAT.Properties.DisplayMember = "CategoryName";
+            //lueCAT.Properties.ValueMember = "ID";
+            //repCAT.DataSource = sc.DT;
+            //repCAT.DisplayMember = "CategoryName";
+            //repCAT.ValueMember = "ID";
 
             sc = px._GetProducts();
             luePNM.Properties.DataSource = sc.DT;
@@ -215,55 +230,87 @@ namespace KVM.Forms
             cboSCT.Text = p.SubCategory;
             cboCMP.Text = p.Company;
             txtPKG.Text = p.PackageSize;
+            txtBVL.Text = p.BuyingValue.ToString();
+            txtSVL.Text = p.SellingValue.ToString();
+            txtMFG.Text = p.MfgDate;
+            txtEXP.Text = p.ExpDate;
             txtHSN.Text = p.HSN;
             txtTAX.Text = p.TaxRate.ToString();
         }
 
         private void luePNM_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
-            //if (e.Button.Index == 1)
-            //{
-            //    ServerToClient sc = new ServerToClient();
-            //    ProductContext px = new ProductContext();
-            //    Product p = new Product();
+            if (e.Button.Index == 1)
+            {
+                wrProducts.ServerToClient sc = new wrProducts.ServerToClient();
+                Products px = new Products();
+                Product p = new Product();
 
-            //    frmNewProduct frm;
-            //    if (luePNM.EditValue != null)
-            //    {
-            //        int ID = Convert.ToInt32(luePNM.EditValue);
-            //        p = px.GetProduct(ID);
-            //        frm = new frmNewProduct(p.Category, p.SubCategory, p.Company, p.ProductName, p.PackageSize);
-            //    }
-            //    else
-            //    {
-            //        frm = new frmNewProduct();
-            //    }
+                frmProduct f = new frmProduct();
+                if(f.ShowDialog() == DialogResult.OK)
+                {
+                    p.Category = f.Category;
+                    p.SubCategory = f.SubCategory;
+                    p.Company = f.Company;
+                    p.ProductName = f.PrdName;
+                    p.PackageSize = f.PackageSize;
+                    p.BuyingValue = f.BuyingValue;
+                    p.SellingValue = f.SellingValue;
+                    p.MfgDate = f.MfgDate;
+                    p.ExpDate = f.ExpDate;
+                    p.Quantity = f.Quantity;
+                    p.BarCode = f.BarCode;
+                    p.SupplierID = Convert.ToInt32(lueSUP.EditValue);
+                    p.HSN = f.HSN;
+                    p.TaxRate = f.TaxRate;
 
-            //    if (frm.ShowDialog() == DialogResult.OK)
-            //    {
-            //        p.Category = frm.CAT;
-            //        p.SubCategory = frm.SCT;
-            //        p.Company = frm.CMP;
-            //        p.ProductName = frm.PNM;
-            //        p.PackageSize = frm.PKG;
+                    sc = px._InsertProduct(p);
 
-            //        sc = px.AddProduct(p);
+                    InitProducts();
+                    luePNM.EditValue = sc.Count;
+                }
+                else
+                {
+                    MessageBox.Show(sc.Message);
+                }
 
-            //        if (sc.Message == null)
-            //        {
-            //            InitProducts();
-            //            luePNM.EditValue = sc.Count;
-            //            p = px.GetProduct(sc.Count);
+                //frmProduct frm;
+                //if (luePNM.EditValue != null)
+                //{
+                //    int ID = Convert.ToInt32(luePNM.EditValue);
+                //    p = px._GetProductDetailByID(ID);
+                //    frm = new frmNewProduct(p.Category, p.SubCategory, p.Company, p.ProductName, p.PackageSize);
+                //}
+                //else
+                //{
+                //    frm = new frmNewProduct();
+                //}
 
-            //            lueCAT.EditValue = p.Category;
-            //            cboSCT.Text = p.SubCategory;
-            //            cboCMP.Text = p.Company;
-            //            txtPKG.Text = p.PackageSize;
-            //        }
-            //        else
-            //            XtraMessageBox.Show(sc.Message);
-            //    }
-            //}
+                //if (frm.ShowDialog() == DialogResult.OK)
+                //{
+                //    p.Category = frm.CAT;
+                //    p.SubCategory = frm.SCT;
+                //    p.Company = frm.CMP;
+                //    p.ProductName = frm.PNM;
+                //    p.PackageSize = frm.PKG;
+
+                //    sc = px.AddProduct(p);
+
+                //    if (sc.Message == null)
+                //    {
+                //        InitProducts();
+                //        luePNM.EditValue = sc.Count;
+                //        p = px.GetProduct(sc.Count);
+
+                //        lueCAT.EditValue = p.Category;
+                //        cboSCT.Text = p.SubCategory;
+                //        cboCMP.Text = p.Company;
+                //        txtPKG.Text = p.PackageSize;
+                //    }
+                //    else
+                //        XtraMessageBox.Show(sc.Message);
+                //}
+            }
         }
 
         private void txtBCD_KeyDown(object sender, KeyEventArgs e)
