@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.MainRibbon = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.bQSell = new DevExpress.XtraBars.BarButtonItem();
@@ -37,7 +38,7 @@
             this.bPrd = new DevExpress.XtraBars.BarButtonItem();
             this.bSup = new DevExpress.XtraBars.BarButtonItem();
             this.bCus = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
+            this.bConSales = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
@@ -53,8 +54,36 @@
             this.ribbonPageGroup4 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup5 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.pnl = new DevExpress.XtraEditors.PanelControl();
+            this.popConSales = new DevExpress.XtraBars.PopupControlContainer(this.components);
+            this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
+            this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.dtpConSalesFr = new DevExpress.XtraEditors.DateEdit();
+            this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.dtpConSalesTo = new DevExpress.XtraEditors.DateEdit();
+            this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.rdoConSalesHSN = new DevExpress.XtraEditors.RadioGroup();
+            this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.btnConSales = new DevExpress.XtraEditors.SimpleButton();
+            this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
             ((System.ComponentModel.ISupportInitialize)(this.MainRibbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pnl)).BeginInit();
+            this.pnl.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.popConSales)).BeginInit();
+            this.popConSales.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
+            this.layoutControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtpConSalesFr.Properties.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtpConSalesFr.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtpConSalesTo.Properties.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtpConSalesTo.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rdoConSalesHSN.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
             this.SuspendLayout();
             // 
             // MainRibbon
@@ -69,7 +98,7 @@
             this.bPrd,
             this.bSup,
             this.bCus,
-            this.barButtonItem1,
+            this.bConSales,
             this.barButtonItem2,
             this.barButtonItem3,
             this.barButtonItem4,
@@ -78,7 +107,7 @@
             this.bDatabase,
             this.skinRibbonGalleryBarItem1});
             this.MainRibbon.Location = new System.Drawing.Point(0, 0);
-            this.MainRibbon.MaxItemId = 16;
+            this.MainRibbon.MaxItemId = 17;
             this.MainRibbon.Name = "MainRibbon";
             this.MainRibbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1,
@@ -149,11 +178,16 @@
             this.bCus.Name = "bCus";
             this.bCus.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bCus_ItemClick);
             // 
-            // barButtonItem1
+            // bConSales
             // 
-            this.barButtonItem1.Caption = "barButtonItem1";
-            this.barButtonItem1.Id = 8;
-            this.barButtonItem1.Name = "barButtonItem1";
+            this.bConSales.ActAsDropDown = true;
+            this.bConSales.ButtonStyle = DevExpress.XtraBars.BarButtonStyle.DropDown;
+            this.bConSales.Caption = "Consolidated Sales";
+            this.bConSales.DropDownControl = this.popConSales;
+            this.bConSales.Glyph = ((System.Drawing.Image)(resources.GetObject("bConSales.Glyph")));
+            this.bConSales.Id = 8;
+            this.bConSales.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("bConSales.LargeGlyph")));
+            this.bConSales.Name = "bConSales";
             // 
             // barButtonItem2
             // 
@@ -227,7 +261,7 @@
             // 
             // ribbonPageGroup3
             // 
-            this.ribbonPageGroup3.ItemLinks.Add(this.barButtonItem1);
+            this.ribbonPageGroup3.ItemLinks.Add(this.bConSales);
             this.ribbonPageGroup3.ItemLinks.Add(this.barButtonItem2);
             this.ribbonPageGroup3.ItemLinks.Add(this.barButtonItem3);
             this.ribbonPageGroup3.ItemLinks.Add(this.barButtonItem4);
@@ -261,11 +295,151 @@
             // 
             // pnl
             // 
+            this.pnl.Controls.Add(this.popConSales);
             this.pnl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnl.Location = new System.Drawing.Point(0, 143);
             this.pnl.Name = "pnl";
             this.pnl.Size = new System.Drawing.Size(1097, 609);
             this.pnl.TabIndex = 1;
+            // 
+            // popConSales
+            // 
+            this.popConSales.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.popConSales.Controls.Add(this.layoutControl1);
+            this.popConSales.Location = new System.Drawing.Point(61, 457);
+            this.popConSales.Name = "popConSales";
+            this.popConSales.Ribbon = this.MainRibbon;
+            this.popConSales.Size = new System.Drawing.Size(262, 99);
+            this.popConSales.TabIndex = 3;
+            this.popConSales.Visible = false;
+            // 
+            // layoutControl1
+            // 
+            this.layoutControl1.Controls.Add(this.btnConSales);
+            this.layoutControl1.Controls.Add(this.rdoConSalesHSN);
+            this.layoutControl1.Controls.Add(this.dtpConSalesTo);
+            this.layoutControl1.Controls.Add(this.dtpConSalesFr);
+            this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.layoutControl1.Location = new System.Drawing.Point(0, 0);
+            this.layoutControl1.Name = "layoutControl1";
+            this.layoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(619, 501, 250, 350);
+            this.layoutControl1.Root = this.layoutControlGroup1;
+            this.layoutControl1.Size = new System.Drawing.Size(262, 99);
+            this.layoutControl1.TabIndex = 0;
+            this.layoutControl1.Text = "layoutControl1";
+            // 
+            // layoutControlGroup1
+            // 
+            this.layoutControlGroup1.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
+            this.layoutControlGroup1.GroupBordersVisible = false;
+            this.layoutControlGroup1.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.layoutControlItem1,
+            this.layoutControlItem3,
+            this.layoutControlItem4,
+            this.emptySpaceItem1,
+            this.layoutControlItem2});
+            this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlGroup1.Name = "Root";
+            this.layoutControlGroup1.Size = new System.Drawing.Size(262, 99);
+            this.layoutControlGroup1.TextVisible = false;
+            // 
+            // dtpConSalesFr
+            // 
+            this.dtpConSalesFr.EditValue = null;
+            this.dtpConSalesFr.Location = new System.Drawing.Point(44, 12);
+            this.dtpConSalesFr.MenuManager = this.MainRibbon;
+            this.dtpConSalesFr.Name = "dtpConSalesFr";
+            this.dtpConSalesFr.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dtpConSalesFr.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dtpConSalesFr.Size = new System.Drawing.Size(85, 20);
+            this.dtpConSalesFr.StyleController = this.layoutControl1;
+            this.dtpConSalesFr.TabIndex = 4;
+            // 
+            // layoutControlItem1
+            // 
+            this.layoutControlItem1.Control = this.dtpConSalesFr;
+            this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlItem1.Name = "layoutControlItem1";
+            this.layoutControlItem1.Size = new System.Drawing.Size(121, 24);
+            this.layoutControlItem1.Text = "From:";
+            this.layoutControlItem1.TextSize = new System.Drawing.Size(28, 13);
+            // 
+            // dtpConSalesTo
+            // 
+            this.dtpConSalesTo.EditValue = null;
+            this.dtpConSalesTo.Location = new System.Drawing.Point(165, 12);
+            this.dtpConSalesTo.MenuManager = this.MainRibbon;
+            this.dtpConSalesTo.Name = "dtpConSalesTo";
+            this.dtpConSalesTo.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dtpConSalesTo.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dtpConSalesTo.Size = new System.Drawing.Size(85, 20);
+            this.dtpConSalesTo.StyleController = this.layoutControl1;
+            this.dtpConSalesTo.TabIndex = 5;
+            // 
+            // layoutControlItem2
+            // 
+            this.layoutControlItem2.Control = this.dtpConSalesTo;
+            this.layoutControlItem2.Location = new System.Drawing.Point(121, 0);
+            this.layoutControlItem2.Name = "layoutControlItem2";
+            this.layoutControlItem2.Size = new System.Drawing.Size(121, 24);
+            this.layoutControlItem2.Text = "To:";
+            this.layoutControlItem2.TextSize = new System.Drawing.Size(28, 13);
+            // 
+            // rdoConSalesHSN
+            // 
+            this.rdoConSalesHSN.EditValue = 0;
+            this.rdoConSalesHSN.Location = new System.Drawing.Point(12, 36);
+            this.rdoConSalesHSN.MenuManager = this.MainRibbon;
+            this.rdoConSalesHSN.Name = "rdoConSalesHSN";
+            this.rdoConSalesHSN.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
+            this.rdoConSalesHSN.Properties.Appearance.Options.UseBackColor = true;
+            this.rdoConSalesHSN.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.rdoConSalesHSN.Properties.Columns = 2;
+            this.rdoConSalesHSN.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(0, "With HSN"),
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(1, "Without HSN")});
+            this.rdoConSalesHSN.Size = new System.Drawing.Size(238, 25);
+            this.rdoConSalesHSN.StyleController = this.layoutControl1;
+            this.rdoConSalesHSN.TabIndex = 6;
+            // 
+            // layoutControlItem3
+            // 
+            this.layoutControlItem3.Control = this.rdoConSalesHSN;
+            this.layoutControlItem3.Location = new System.Drawing.Point(0, 24);
+            this.layoutControlItem3.Name = "layoutControlItem3";
+            this.layoutControlItem3.Size = new System.Drawing.Size(242, 29);
+            this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem3.TextVisible = false;
+            // 
+            // btnConSales
+            // 
+            this.btnConSales.Location = new System.Drawing.Point(170, 65);
+            this.btnConSales.Name = "btnConSales";
+            this.btnConSales.Size = new System.Drawing.Size(80, 22);
+            this.btnConSales.StyleController = this.layoutControl1;
+            this.btnConSales.TabIndex = 7;
+            this.btnConSales.Text = "&OK";
+            // 
+            // layoutControlItem4
+            // 
+            this.layoutControlItem4.Control = this.btnConSales;
+            this.layoutControlItem4.Location = new System.Drawing.Point(158, 53);
+            this.layoutControlItem4.Name = "layoutControlItem4";
+            this.layoutControlItem4.Size = new System.Drawing.Size(84, 26);
+            this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem4.TextVisible = false;
+            // 
+            // emptySpaceItem1
+            // 
+            this.emptySpaceItem1.AllowHotTrack = false;
+            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 53);
+            this.emptySpaceItem1.Name = "emptySpaceItem1";
+            this.emptySpaceItem1.Size = new System.Drawing.Size(158, 26);
+            this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
             // MainForm
             // 
@@ -280,6 +454,22 @@
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.MainRibbon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pnl)).EndInit();
+            this.pnl.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.popConSales)).EndInit();
+            this.popConSales.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
+            this.layoutControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtpConSalesFr.Properties.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtpConSalesFr.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtpConSalesTo.Properties.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtpConSalesTo.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rdoConSalesHSN.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -299,7 +489,7 @@
         private DevExpress.XtraBars.BarButtonItem bCus;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup2;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup3;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
+        private DevExpress.XtraBars.BarButtonItem bConSales;
         private DevExpress.XtraBars.BarButtonItem barButtonItem2;
         private DevExpress.XtraBars.BarButtonItem barButtonItem3;
         private DevExpress.XtraBars.BarButtonItem barButtonItem4;
@@ -311,6 +501,18 @@
         private DevExpress.XtraBars.SkinRibbonGalleryBarItem skinRibbonGalleryBarItem1;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup5;
         private DevExpress.XtraEditors.PanelControl pnl;
+        private DevExpress.XtraBars.PopupControlContainer popConSales;
+        private DevExpress.XtraLayout.LayoutControl layoutControl1;
+        private DevExpress.XtraEditors.SimpleButton btnConSales;
+        private DevExpress.XtraEditors.RadioGroup rdoConSalesHSN;
+        private DevExpress.XtraEditors.DateEdit dtpConSalesTo;
+        private DevExpress.XtraEditors.DateEdit dtpConSalesFr;
+        private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup1;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
+        private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem1;
     }
 }
 

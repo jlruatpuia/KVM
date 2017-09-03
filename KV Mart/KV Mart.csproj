@@ -139,6 +139,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reports\rptConSales.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptConSales.Designer.cs">
+      <DependentUpon>rptConSales.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reports\rptInvoice.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -215,6 +221,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Reports\rptConSales.resx">
+      <DependentUpon>rptConSales.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reports\rptInvoice.resx">
       <DependentUpon>rptInvoice.cs</DependentUpon>
     </EmbeddedResource>

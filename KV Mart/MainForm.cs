@@ -16,6 +16,14 @@ namespace KVM
         public MainForm()
         {
             InitializeComponent();
+            InitConsolidatedSales();
+        }
+
+        void InitConsolidatedSales()
+        {
+            dtpConSalesFr.DateTime = DateTime.Now;
+            dtpConSalesTo.DateTime = DateTime.Now;
+            rdoConSalesHSN.SelectedIndex = 0;
         }
         private void LoadControl(XtraUserControl ctrl)
         {
