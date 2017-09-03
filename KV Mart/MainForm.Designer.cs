@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            this.ribbonControl1 = new DevExpress.XtraBars.Ribbon.RibbonControl();
+            this.MainRibbon = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.bQSell = new DevExpress.XtraBars.BarButtonItem();
             this.bSell = new DevExpress.XtraBars.BarButtonItem();
             this.bPurchase = new DevExpress.XtraBars.BarButtonItem();
@@ -52,14 +52,16 @@
             this.ribbonPage2 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup4 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup5 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
+            this.pnl = new DevExpress.XtraEditors.PanelControl();
+            ((System.ComponentModel.ISupportInitialize)(this.MainRibbon)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pnl)).BeginInit();
             this.SuspendLayout();
             // 
-            // ribbonControl1
+            // MainRibbon
             // 
-            this.ribbonControl1.ExpandCollapseItem.Id = 0;
-            this.ribbonControl1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
-            this.ribbonControl1.ExpandCollapseItem,
+            this.MainRibbon.ExpandCollapseItem.Id = 0;
+            this.MainRibbon.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
+            this.MainRibbon.ExpandCollapseItem,
             this.bQSell,
             this.bSell,
             this.bPurchase,
@@ -75,14 +77,14 @@
             this.bUsers,
             this.bDatabase,
             this.skinRibbonGalleryBarItem1});
-            this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl1.MaxItemId = 16;
-            this.ribbonControl1.Name = "ribbonControl1";
-            this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
+            this.MainRibbon.Location = new System.Drawing.Point(0, 0);
+            this.MainRibbon.MaxItemId = 16;
+            this.MainRibbon.Name = "MainRibbon";
+            this.MainRibbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1,
             this.ribbonPage2});
-            this.ribbonControl1.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2010;
-            this.ribbonControl1.Size = new System.Drawing.Size(1097, 143);
+            this.MainRibbon.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2010;
+            this.MainRibbon.Size = new System.Drawing.Size(1097, 143);
             // 
             // bQSell
             // 
@@ -118,6 +120,7 @@
             this.bCat.Id = 4;
             this.bCat.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("bCat.LargeGlyph")));
             this.bCat.Name = "bCat";
+            this.bCat.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bCat_ItemClick);
             // 
             // bPrd
             // 
@@ -126,6 +129,7 @@
             this.bPrd.Id = 5;
             this.bPrd.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("bPrd.LargeGlyph")));
             this.bPrd.Name = "bPrd";
+            this.bPrd.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bPrd_ItemClick);
             // 
             // bSup
             // 
@@ -134,6 +138,7 @@
             this.bSup.Id = 6;
             this.bSup.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("bSup.LargeGlyph")));
             this.bSup.Name = "bSup";
+            this.bSup.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bSup_ItemClick);
             // 
             // bCus
             // 
@@ -142,6 +147,7 @@
             this.bCus.Id = 7;
             this.bCus.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("bCus.LargeGlyph")));
             this.bCus.Name = "bCus";
+            this.bCus.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bCus_ItemClick);
             // 
             // barButtonItem1
             // 
@@ -253,17 +259,27 @@
             this.ribbonPageGroup5.ShowCaptionButton = false;
             this.ribbonPageGroup5.Text = "Theme";
             // 
+            // pnl
+            // 
+            this.pnl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnl.Location = new System.Drawing.Point(0, 143);
+            this.pnl.Name = "pnl";
+            this.pnl.Size = new System.Drawing.Size(1097, 609);
+            this.pnl.TabIndex = 1;
+            // 
             // MainForm
             // 
             this.AllowFormGlass = DevExpress.Utils.DefaultBoolean.False;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1097, 752);
-            this.Controls.Add(this.ribbonControl1);
+            this.Controls.Add(this.pnl);
+            this.Controls.Add(this.MainRibbon);
             this.Name = "MainForm";
-            this.Ribbon = this.ribbonControl1;
+            this.Ribbon = this.MainRibbon;
             this.Text = "Form1";
-            ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MainRibbon)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pnl)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -271,7 +287,7 @@
 
         #endregion
 
-        private DevExpress.XtraBars.Ribbon.RibbonControl ribbonControl1;
+        private DevExpress.XtraBars.Ribbon.RibbonControl MainRibbon;
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage1;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup1;
         private DevExpress.XtraBars.BarButtonItem bQSell;
@@ -294,6 +310,7 @@
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup4;
         private DevExpress.XtraBars.SkinRibbonGalleryBarItem skinRibbonGalleryBarItem1;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup5;
+        private DevExpress.XtraEditors.PanelControl pnl;
     }
 }
 

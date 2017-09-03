@@ -39,7 +39,7 @@
             this.lbMSG = new DevExpress.XtraEditors.LabelControl();
             this.btnCancel = new DevExpress.XtraEditors.SimpleButton();
             this.btnSave = new DevExpress.XtraEditors.SimpleButton();
-            this.spinEdit1 = new DevExpress.XtraEditors.SpinEdit();
+            this.txtDSC = new DevExpress.XtraEditors.SpinEdit();
             this.gaugeControl1 = new DevExpress.XtraGauges.Win.GaugeControl();
             this.dgTTL = new DevExpress.XtraGauges.Win.Gauges.Digital.DigitalGauge();
             this.digitalBackgroundLayerComponent1 = new DevExpress.XtraGauges.Win.Gauges.Digital.DigitalBackgroundLayerComponent();
@@ -49,7 +49,9 @@
             this.colPNM = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colHSN = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colSVL = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repSVL1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.colQTY = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repQTY1 = new DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit();
             this.colAMT = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colBCD = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colDel = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -57,6 +59,7 @@
             this.btnAdd = new DevExpress.XtraEditors.SimpleButton();
             this.txtBCD = new DevExpress.XtraEditors.TextEdit();
             this.luePRD = new DevExpress.XtraEditors.SearchLookUpEdit();
+            this.repCAT = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.sluePRD = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colPRDID = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCAT = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -94,13 +97,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.spinEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDSC.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgTTL)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.digitalBackgroundLayerComponent1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grd)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grv)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repSVL1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repQTY1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBCD.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.luePRD.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repCAT)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sluePRD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtpSDT.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtpSDT.Properties)).BeginInit();
@@ -154,7 +160,7 @@
             this.layoutControl1.Controls.Add(this.lbMSG);
             this.layoutControl1.Controls.Add(this.btnCancel);
             this.layoutControl1.Controls.Add(this.btnSave);
-            this.layoutControl1.Controls.Add(this.spinEdit1);
+            this.layoutControl1.Controls.Add(this.txtDSC);
             this.layoutControl1.Controls.Add(this.gaugeControl1);
             this.layoutControl1.Controls.Add(this.grd);
             this.layoutControl1.Controls.Add(this.btnAdd);
@@ -205,21 +211,22 @@
             this.btnSave.StyleController = this.layoutControl1;
             this.btnSave.TabIndex = 12;
             this.btnSave.Text = "&Save";
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // spinEdit1
+            // txtDSC
             // 
-            this.spinEdit1.EditValue = new decimal(new int[] {
+            this.txtDSC.EditValue = new decimal(new int[] {
             0,
             0,
             0,
             0});
-            this.spinEdit1.Location = new System.Drawing.Point(521, 557);
-            this.spinEdit1.Name = "spinEdit1";
-            this.spinEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.txtDSC.Location = new System.Drawing.Point(521, 557);
+            this.txtDSC.Name = "txtDSC";
+            this.txtDSC.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.spinEdit1.Size = new System.Drawing.Size(239, 20);
-            this.spinEdit1.StyleController = this.layoutControl1;
-            this.spinEdit1.TabIndex = 11;
+            this.txtDSC.Size = new System.Drawing.Size(239, 20);
+            this.txtDSC.StyleController = this.layoutControl1;
+            this.txtDSC.TabIndex = 11;
             // 
             // gaugeControl1
             // 
@@ -255,6 +262,9 @@
             this.grd.Location = new System.Drawing.Point(12, 121);
             this.grd.MainView = this.grv;
             this.grd.Name = "grd";
+            this.grd.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repSVL1,
+            this.repQTY1});
             this.grd.Size = new System.Drawing.Size(748, 388);
             this.grd.TabIndex = 9;
             this.grd.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -276,6 +286,7 @@
             this.grv.Name = "grv";
             this.grv.OptionsView.ShowGroupPanel = false;
             this.grv.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.grv_CustomDrawRowIndicator);
+            this.grv.RowUpdated += new DevExpress.XtraGrid.Views.Base.RowObjectEventHandler(this.grv_RowUpdated);
             // 
             // colPID
             // 
@@ -312,20 +323,36 @@
             // colSVL
             // 
             this.colSVL.Caption = "SellingValue";
+            this.colSVL.ColumnEdit = this.repSVL1;
             this.colSVL.FieldName = "SellingValue";
             this.colSVL.Name = "colSVL";
             this.colSVL.Visible = true;
             this.colSVL.VisibleIndex = 2;
             this.colSVL.Width = 89;
             // 
+            // repSVL1
+            // 
+            this.repSVL1.AutoHeight = false;
+            this.repSVL1.Mask.EditMask = "f2";
+            this.repSVL1.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
+            this.repSVL1.Name = "repSVL1";
+            // 
             // colQTY
             // 
             this.colQTY.Caption = "Quantity";
+            this.colQTY.ColumnEdit = this.repQTY1;
             this.colQTY.FieldName = "Quantity";
             this.colQTY.Name = "colQTY";
             this.colQTY.Visible = true;
             this.colQTY.VisibleIndex = 3;
             this.colQTY.Width = 55;
+            // 
+            // repQTY1
+            // 
+            this.repQTY1.AutoHeight = false;
+            this.repQTY1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repQTY1.Name = "repQTY1";
             // 
             // colAMT
             // 
@@ -402,10 +429,22 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.luePRD.Properties.NullText = "[Select Product]";
             this.luePRD.Properties.PopupFilterMode = DevExpress.XtraEditors.PopupFilterMode.StartsWith;
+            this.luePRD.Properties.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repCAT});
             this.luePRD.Properties.View = this.sluePRD;
             this.luePRD.Size = new System.Drawing.Size(341, 20);
             this.luePRD.StyleController = this.layoutControl1;
             this.luePRD.TabIndex = 1;
+            // 
+            // repCAT
+            // 
+            this.repCAT.AutoHeight = false;
+            this.repCAT.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repCAT.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("ID", "Name9", 20, DevExpress.Utils.FormatType.None, "", false, DevExpress.Utils.HorzAlignment.Default),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("CategoryName", "Name10")});
+            this.repCAT.Name = "repCAT";
             // 
             // sluePRD
             // 
@@ -437,7 +476,8 @@
             // colCAT
             // 
             this.colCAT.Caption = "Category";
-            this.colCAT.FieldName = "CategoryName";
+            this.colCAT.ColumnEdit = this.repCAT;
+            this.colCAT.FieldName = "Category";
             this.colCAT.Name = "colCAT";
             this.colCAT.Visible = true;
             this.colCAT.VisibleIndex = 0;
@@ -603,7 +643,7 @@
             // 
             // layoutControlItem8
             // 
-            this.layoutControlItem8.Control = this.spinEdit1;
+            this.layoutControlItem8.Control = this.txtDSC;
             this.layoutControlItem8.Location = new System.Drawing.Point(433, 545);
             this.layoutControlItem8.Name = "layoutControlItem8";
             this.layoutControlItem8.Size = new System.Drawing.Size(319, 24);
@@ -737,13 +777,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.spinEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDSC.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgTTL)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.digitalBackgroundLayerComponent1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grd)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grv)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repSVL1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repQTY1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBCD.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.luePRD.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repCAT)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sluePRD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtpSDT.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtpSDT.Properties)).EndInit();
@@ -799,7 +842,7 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem7;
         private DevExpress.XtraEditors.SimpleButton btnCancel;
         private DevExpress.XtraEditors.SimpleButton btnSave;
-        private DevExpress.XtraEditors.SpinEdit spinEdit1;
+        private DevExpress.XtraEditors.SpinEdit txtDSC;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem8;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem9;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem10;
@@ -828,5 +871,8 @@
         private DevExpress.XtraGrid.Columns.GridColumn colSAC;
         private DevExpress.XtraGrid.Columns.GridColumn colPRDSV;
         private DevExpress.XtraGrid.Columns.GridColumn colBarCode;
+        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repCAT;
+        private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repSVL1;
+        private DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit repQTY1;
     }
 }

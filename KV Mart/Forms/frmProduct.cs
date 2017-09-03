@@ -12,7 +12,7 @@ using KVM.wrProducts;
 
 namespace KVM.Forms
 {
-    public partial class frmProduct : DevExpress.XtraEditors.XtraForm
+    public partial class frmProduct : XtraForm
     {
         public int ID { get; set; }
         public int Category { get; set; }
@@ -37,6 +37,42 @@ namespace KVM.Forms
             LoadCategory();
             LoadSubCategory();
             LoadCompany();
+
+            lciBCD.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never;
+            lciQTY.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never;
+            lciSUP.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never;
+        }
+
+        public frmProduct(Product p)
+        {
+            InitializeComponent();
+
+            LoadCategory();
+            LoadSubCategory();
+            LoadCompany();
+
+            wrPeoples.ServerToClient pc = new wrPeoples.ServerToClient();
+            wrPeoples.Peoples sup = new wrPeoples.Peoples();
+            pc = sup._GetSuppliers();
+            lueSUP.Properties.DataSource = pc.DT;
+            lueSUP.Properties.DisplayMember = "SupplierName";
+            lueSUP.Properties.ValueMember = "ID";
+
+            ID = p.ID;
+            lueCAT.EditValue = p.Category;
+            cboSCT.Text = p.SubCategory;
+            cboCMP.Text = p.Company;
+            txtPNM.Text = p.ProductName;
+            txtPKG.Text = p.PackageSize;
+            txtBVL.Text = p.BuyingValue.ToString();
+            txtSVL.Text = p.SellingValue.ToString();
+            txtMFG.Text = p.MfgDate;
+            txtEXP.Text = p.ExpDate;
+            txtQTY.Text = p.Quantity.ToString();
+            txtBCD.Text = p.BarCode;
+            txtHSN.Text = p.HSN;
+            txtTAX.Text = p.TaxRate.ToString();
+            lueSUP.EditValue = p.SupplierID;
         }
 
         void LoadCategory()

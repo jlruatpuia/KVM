@@ -48,6 +48,8 @@ namespace KVM.wrProducts {
         
         private System.Threading.SendOrPostCallback _GetProductsOperationCompleted;
         
+        private System.Threading.SendOrPostCallback _GetAvailableProductsOperationCompleted;
+        
         private System.Threading.SendOrPostCallback _GetProductDetailByIDOperationCompleted;
         
         private System.Threading.SendOrPostCallback _GetProductCountByBarCodeOperationCompleted;
@@ -57,6 +59,10 @@ namespace KVM.wrProducts {
         private System.Threading.SendOrPostCallback _GetProductDetailByBarCodeOperationCompleted;
         
         private System.Threading.SendOrPostCallback _InsertProductOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback _UpdateProductOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback _DeleteProductOperationCompleted;
         
         private System.Threading.SendOrPostCallback _UpdateProductQuantityOperationCompleted;
         
@@ -126,6 +132,9 @@ namespace KVM.wrProducts {
         public event _GetProductsCompletedEventHandler _GetProductsCompleted;
         
         /// <remarks/>
+        public event _GetAvailableProductsCompletedEventHandler _GetAvailableProductsCompleted;
+        
+        /// <remarks/>
         public event _GetProductDetailByIDCompletedEventHandler _GetProductDetailByIDCompleted;
         
         /// <remarks/>
@@ -139,6 +148,12 @@ namespace KVM.wrProducts {
         
         /// <remarks/>
         public event _InsertProductCompletedEventHandler _InsertProductCompleted;
+        
+        /// <remarks/>
+        public event _UpdateProductCompletedEventHandler _UpdateProductCompleted;
+        
+        /// <remarks/>
+        public event _DeleteProductCompletedEventHandler _DeleteProductCompleted;
         
         /// <remarks/>
         public event _UpdateProductQuantityCompletedEventHandler _UpdateProductQuantityCompleted;
@@ -397,6 +412,33 @@ namespace KVM.wrProducts {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/_GetAvailableProducts", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public ServerToClient _GetAvailableProducts() {
+            object[] results = this.Invoke("_GetAvailableProducts", new object[0]);
+            return ((ServerToClient)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void _GetAvailableProductsAsync() {
+            this._GetAvailableProductsAsync(null);
+        }
+        
+        /// <remarks/>
+        public void _GetAvailableProductsAsync(object userState) {
+            if ((this._GetAvailableProductsOperationCompleted == null)) {
+                this._GetAvailableProductsOperationCompleted = new System.Threading.SendOrPostCallback(this.On_GetAvailableProductsOperationCompleted);
+            }
+            this.InvokeAsync("_GetAvailableProducts", new object[0], this._GetAvailableProductsOperationCompleted, userState);
+        }
+        
+        private void On_GetAvailableProductsOperationCompleted(object arg) {
+            if ((this._GetAvailableProductsCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this._GetAvailableProductsCompleted(this, new _GetAvailableProductsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/_GetProductDetailByID", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public Product _GetProductDetailByID(int ID) {
             object[] results = this.Invoke("_GetProductDetailByID", new object[] {
@@ -538,6 +580,64 @@ namespace KVM.wrProducts {
             if ((this._InsertProductCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this._InsertProductCompleted(this, new _InsertProductCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/_UpdateProduct", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public ServerToClient _UpdateProduct(Product p) {
+            object[] results = this.Invoke("_UpdateProduct", new object[] {
+                        p});
+            return ((ServerToClient)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void _UpdateProductAsync(Product p) {
+            this._UpdateProductAsync(p, null);
+        }
+        
+        /// <remarks/>
+        public void _UpdateProductAsync(Product p, object userState) {
+            if ((this._UpdateProductOperationCompleted == null)) {
+                this._UpdateProductOperationCompleted = new System.Threading.SendOrPostCallback(this.On_UpdateProductOperationCompleted);
+            }
+            this.InvokeAsync("_UpdateProduct", new object[] {
+                        p}, this._UpdateProductOperationCompleted, userState);
+        }
+        
+        private void On_UpdateProductOperationCompleted(object arg) {
+            if ((this._UpdateProductCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this._UpdateProductCompleted(this, new _UpdateProductCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/_DeleteProduct", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public ServerToClient _DeleteProduct(int ID) {
+            object[] results = this.Invoke("_DeleteProduct", new object[] {
+                        ID});
+            return ((ServerToClient)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void _DeleteProductAsync(int ID) {
+            this._DeleteProductAsync(ID, null);
+        }
+        
+        /// <remarks/>
+        public void _DeleteProductAsync(int ID, object userState) {
+            if ((this._DeleteProductOperationCompleted == null)) {
+                this._DeleteProductOperationCompleted = new System.Threading.SendOrPostCallback(this.On_DeleteProductOperationCompleted);
+            }
+            this.InvokeAsync("_DeleteProduct", new object[] {
+                        ID}, this._DeleteProductOperationCompleted, userState);
+        }
+        
+        private void On_DeleteProductOperationCompleted(object arg) {
+            if ((this._DeleteProductCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this._DeleteProductCompleted(this, new _DeleteProductCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -1132,6 +1232,32 @@ namespace KVM.wrProducts {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    public delegate void _GetAvailableProductsCompletedEventHandler(object sender, _GetAvailableProductsCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class _GetAvailableProductsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal _GetAvailableProductsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public ServerToClient Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((ServerToClient)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
     public delegate void _GetProductDetailByIDCompletedEventHandler(object sender, _GetProductDetailByIDCompletedEventArgs e);
     
     /// <remarks/>
@@ -1247,6 +1373,58 @@ namespace KVM.wrProducts {
         private object[] results;
         
         internal _InsertProductCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public ServerToClient Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((ServerToClient)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    public delegate void _UpdateProductCompletedEventHandler(object sender, _UpdateProductCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class _UpdateProductCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal _UpdateProductCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public ServerToClient Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((ServerToClient)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    public delegate void _DeleteProductCompletedEventHandler(object sender, _DeleteProductCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class _DeleteProductCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal _DeleteProductCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

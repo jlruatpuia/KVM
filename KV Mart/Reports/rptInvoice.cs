@@ -13,5 +13,9 @@ namespace KVM.Reports
             InitializeComponent();
         }
 
+        private void rptInvoice_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+
+        }
     }
 }

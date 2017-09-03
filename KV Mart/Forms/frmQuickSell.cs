@@ -12,10 +12,12 @@ using KVM.Codes;
 using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.Data.Filtering;
 using DevExpress.XtraGrid.Columns;
+using IMS2.Reports;
+using DevExpress.XtraReports.UI;
 
 namespace KVM.Forms
 {
-    public partial class frmQuickSell : DevExpress.XtraEditors.XtraForm
+    public partial class frmQuickSell : XtraForm
     {
         wrSettings.MySettings g = new wrSettings.MySettings();
         wrProducts.Products p = new wrProducts.Products();
@@ -36,7 +38,12 @@ namespace KVM.Forms
             txtINV.Text = g.GetSalesInvoice(DateTime.Now, "KVM");
 
             wrProducts.ServerToClient sc = new wrProducts.ServerToClient();
-            sc = p._GetProducts();
+            sc = p._GetCategories();
+            repCAT.DataSource = sc.DT;
+            repCAT.DisplayMember = "CategoryName";
+            repCAT.ValueMember = "ID";
+
+            sc = p._GetAvailableProducts();
             luePRD.Properties.DataSource = sc.DT;
             luePRD.Properties.DisplayMember = "ProductName";
             luePRD.Properties.ValueMember = "ID";
@@ -145,6 +152,132 @@ namespace KVM.Forms
 
             double tot = Convert.ToDouble(colAMT.SummaryText);
             dgTTL.Text = tot.ToString();
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            wrTransact.ServerToClient tt = new wrTransact.ServerToClient();
+            wrTransact.Transact tx = new wrTransact.Transact();
+            s = new wrTransact.Sale();
+            wrTransact.SaleDetail sd = new wrTransact.SaleDetail();
+
+            wrPeoples.Peoples pp = new wrPeoples.Peoples();
+            wrPeoples.Customer c = new wrPeoples.Customer();
+            //wrPeoples.CustomerAccount ca = new wrPeoples.CustomerAccount();
+
+            //wrTransact.Sale s = new wrTransact.Sale();
+
+            c = pp.DefaultCustomer();
+
+            s.InvoiceNo = g.GetSalesInvoice(DateTime.Now, "KVM");
+            s.SellDate = dtpSDT.DateTime;
+            s.CustomerID = c.ID;
+            s.Amount = Convert.ToDouble(dgTTL.Text);
+            s.Discount = Convert.ToDouble(txtDSC.Text);
+            s.Payment = s.Amount - s.Discount;
+            s.Balance = 0;
+            tt = tx._AddSale(s);
+
+            //ca.CustomerID = c.ID;
+            //ca.TransDate = s.SellDate;
+            //ca.Description = s.InvoiceNo;
+
+            //if(s.Balance == 0)
+            //{
+            //    ca.Debit = s.Payment;
+            //    ca.Credit = s.Payment;
+            //}
+            //else
+            //{
+            //    ca.Debit = s.Payment;
+            //    ca.Credit = s.Payment;
+            //}
+
+            //ca.Balance = s.Balance;
+
+            //tt = tx._addtr
+
+            if (tt.Message == null)
+            {
+                for (int i = 0; i <= grv.RowCount - 1; i++)
+                {
+                    sd.InvoiceNo = s.InvoiceNo;
+                    sd.ProductID = Convert.ToInt32(grv.GetRowCellValue(i, colPID));
+                    sd.BuyingValue = Convert.ToDouble(grv.GetRowCellValue(i, colBVL));
+                    sd.SellingValue = Convert.ToDouble(grv.GetRowCellValue(i, colSVL));
+                    sd.Quantity = Convert.ToInt32(grv.GetRowCellValue(i, colQTY));
+                    sd.Amount = Convert.ToDouble(grv.GetRowCellValue(i, colAMT));
+                    //pdid = Convert.ToInt32(grv.GetRowCellValue(i, colPDID));
+                    tt = tx._AddSaleDetails(sd);
+                    if (tt.Message != null)
+                    {
+                        XtraMessageBox.Show(tt.Message);
+                        break;
+                    }
+                    else
+                    {
+                        //int pdid = sc.Count;
+                        wrProducts.ServerToClient sc = new wrProducts.ServerToClient();
+                        wrProducts.Products pd = new wrProducts.Products();
+                        sc = pd._UpdateProductQuantity(sd.Quantity, "-", sd.ProductID);
+                    }
+                }
+                if (XtraMessageBox.Show("Product(s) sold. Print Receipt?", "Print", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    rptQuickSale rpt = new rptQuickSale();
+                    tx = new wrTransact.Transact();
+                    tt = tx._QuickSaleReport(s.InvoiceNo);
+                    rpt.DataSource = tt.DT;
+                    XRSummary qty = new XRSummary();
+                    qty.Running = SummaryRunning.Report;
+
+                    rpt.lbINV.Text = s.InvoiceNo;
+
+                    rpt.lbSDT.Text = s.SellDate.ToShortDateString() + ", " + s.SellDate.ToShortTimeString();
+                    rpt.lbQTY.DataBindings.Add("Text", null, "Quantity");
+                    rpt.lbITM.DataBindings.Add("Text", null, "productname");
+                    rpt.lbPRC.DataBindings.Add("Text", null, "Amount", "{0:C2}");
+                    //rpt.lbTQT.Text = sc.Count.ToString();
+                    rpt.lbTQT.DataBindings.Add("Text", null, "Quantity");
+
+                    rpt.lbSTT.Text = s.Amount.ToString("C", Cultures.India);
+                    if (s.Discount > 0)
+                        rpt.lbDSC.Text = s.Discount.ToString("C", Cultures.India);
+                    else
+                    {
+                        rpt.xrTableCell1.Visible = false;
+                        rpt.lbDSC.Visible = false;
+                    }
+                    rpt.lbTTL.Text = (s.Amount - s.Discount).ToString("C", Cultures.India);
+                    rpt.lbTQT.Summary = qty;
+                    //rpt.PrinterName = Properties.Settings.Default.ReceiptPrinter;
+                    rpt.ShowPrintMarginsWarning = false;
+                    ReportPrintTool rp = new ReportPrintTool(rpt);
+                    rp.Print();
+                    //rpt.PrintDialog();
+                }
+            }
+            else
+            {
+                XtraMessageBox.Show(tt.Message);
+                return;
+            }
+
+            //Reset();
+        }
+
+        private void grv_RowUpdated(object sender, DevExpress.XtraGrid.Views.Base.RowObjectEventArgs e)
+        {
+            double svl = Convert.ToDouble(grv.GetFocusedRowCellValue(colSVL));
+            int qty = Convert.ToInt32(grv.GetFocusedRowCellValue(colQTY));
+            double amt = qty * svl;
+            grv.SetFocusedRowCellValue(colAMT, amt);
+
+            grv.UpdateSummary();
+
+            double TotalAmount = Convert.ToDouble(colAMT.SummaryText);
+            //txtTAM.Text = TotalAmount.ToString();
+            dgTTL.Text = TotalAmount.ToString();
         }
     }
 }

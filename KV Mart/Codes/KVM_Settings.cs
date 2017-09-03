@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -88,6 +89,11 @@ namespace KVM.Codes
                 mainForm.Size.Height.ToString() + "|" +
                 mainForm.WindowState.ToString();
         }
+    }
+    public static class Cultures
+    {
+        public static readonly CultureInfo India =
+        CultureInfo.GetCultureInfo("en-IN");
     }
 }
 

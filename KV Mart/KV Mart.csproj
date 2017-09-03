@@ -36,6 +36,7 @@
     <Reference Include="DevExpress.BonusSkins.v16.1" />
     <Reference Include="DevExpress.Charts.v16.1.Core, Version=16.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Data.v16.1" />
+    <Reference Include="DevExpress.Images.v16.1, Version=16.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Office.v16.1.Core, Version=16.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.PivotGrid.v16.1.Core, Version=16.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Printing.v16.1.Core" />
@@ -76,11 +77,29 @@
     <Compile Include="Controls\ucCategories.Designer.cs">
       <DependentUpon>ucCategories.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\ucCustomers.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ucCustomers.Designer.cs">
+      <DependentUpon>ucCustomers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ucProducts.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ucProducts.Designer.cs">
+      <DependentUpon>ucProducts.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\frmCategory.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\frmCategory.Designer.cs">
       <DependentUpon>frmCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmCustomer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmCustomer.Designer.cs">
+      <DependentUpon>frmCustomer.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\frmProduct.cs">
       <SubType>Form</SubType>
@@ -126,6 +145,12 @@
     <Compile Include="Reports\rptInvoice.Designer.cs">
       <DependentUpon>rptInvoice.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reports\rptQuickSale.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptQuickSale.designer.cs">
+      <DependentUpon>rptQuickSale.cs</DependentUpon>
+    </Compile>
     <Compile Include="Web References\wrPeoples\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -149,8 +174,17 @@
     <EmbeddedResource Include="Controls\ucCategories.resx">
       <DependentUpon>ucCategories.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ucCustomers.resx">
+      <DependentUpon>ucCustomers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ucProducts.resx">
+      <DependentUpon>ucProducts.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmCategory.resx">
       <DependentUpon>frmCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmCustomer.resx">
+      <DependentUpon>frmCustomer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmProduct.resx">
       <DependentUpon>frmProduct.cs</DependentUpon>
@@ -183,6 +217,9 @@
     </Compile>
     <EmbeddedResource Include="Reports\rptInvoice.resx">
       <DependentUpon>rptInvoice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptQuickSale.resx">
+      <DependentUpon>rptQuickSale.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.config" />
     <None Include="Properties\Settings.settings">

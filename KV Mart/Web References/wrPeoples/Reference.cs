@@ -40,6 +40,8 @@ namespace KVM.wrPeoples {
         
         private System.Threading.SendOrPostCallback _DeleteCustomerOperationCompleted;
         
+        private System.Threading.SendOrPostCallback _GetCustomerAccountByIDOperationCompleted;
+        
         private System.Threading.SendOrPostCallback _GetCustomerAccountOperationCompleted;
         
         private System.Threading.SendOrPostCallback _GetCustomerBalanceOperationCompleted;
@@ -126,6 +128,9 @@ namespace KVM.wrPeoples {
         
         /// <remarks/>
         public event _DeleteCustomerCompletedEventHandler _DeleteCustomerCompleted;
+        
+        /// <remarks/>
+        public event _GetCustomerAccountByIDCompletedEventHandler _GetCustomerAccountByIDCompleted;
         
         /// <remarks/>
         public event _GetCustomerAccountCompletedEventHandler _GetCustomerAccountCompleted;
@@ -318,6 +323,35 @@ namespace KVM.wrPeoples {
             if ((this._DeleteCustomerCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this._DeleteCustomerCompleted(this, new _DeleteCustomerCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/_GetCustomerAccountByID", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public ServerToClient _GetCustomerAccountByID(int CustomerID) {
+            object[] results = this.Invoke("_GetCustomerAccountByID", new object[] {
+                        CustomerID});
+            return ((ServerToClient)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void _GetCustomerAccountByIDAsync(int CustomerID) {
+            this._GetCustomerAccountByIDAsync(CustomerID, null);
+        }
+        
+        /// <remarks/>
+        public void _GetCustomerAccountByIDAsync(int CustomerID, object userState) {
+            if ((this._GetCustomerAccountByIDOperationCompleted == null)) {
+                this._GetCustomerAccountByIDOperationCompleted = new System.Threading.SendOrPostCallback(this.On_GetCustomerAccountByIDOperationCompleted);
+            }
+            this.InvokeAsync("_GetCustomerAccountByID", new object[] {
+                        CustomerID}, this._GetCustomerAccountByIDOperationCompleted, userState);
+        }
+        
+        private void On_GetCustomerAccountByIDOperationCompleted(object arg) {
+            if ((this._GetCustomerAccountByIDCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this._GetCustomerAccountByIDCompleted(this, new _GetCustomerAccountByIDCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -1345,6 +1379,32 @@ namespace KVM.wrPeoples {
         private object[] results;
         
         internal _DeleteCustomerCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public ServerToClient Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((ServerToClient)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    public delegate void _GetCustomerAccountByIDCompletedEventHandler(object sender, _GetCustomerAccountByIDCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class _GetCustomerAccountByIDCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal _GetCustomerAccountByIDCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
